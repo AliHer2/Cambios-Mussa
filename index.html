@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculadora de Cambio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header>
+            <h1>Cambios<span class="highlight">Mussa</span></h1>
+            <button id="btn-config" class="icon-btn" aria-label="Configuración">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+        </header>
+
+        <!-- MAIN CALCULATOR VIEW -->
+        <main id="view-calculator" class="view active">
+            <div class="toggle-container">
+                <button id="btn-cop-ves" class="toggle-btn active">COP a VES</button>
+                <button id="btn-ves-cop" class="toggle-btn">VES a COP</button>
+            </div>
+
+            <div class="input-group">
+                <label for="amount-in" id="label-in">Recibes (Pesos)</label>
+                <div class="input-wrapper">
+                    <span class="currency-symbol" id="symbol-in">$</span>
+                    <input type="number" id="amount-in" placeholder="0.00" inputmode="decimal">
+                </div>
+            </div>
+
+            <div class="exchange-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </div>
+
+            <div class="output-group">
+                <label id="label-out">Entregas (Bolívares)</label>
+                <div class="output-value">
+                    <span class="currency-symbol" id="symbol-out">Bs.</span>
+                    <span id="amount-out">0.00</span>
+                </div>
+            </div>
+
+            <div class="details-card">
+                <div class="detail-row">
+                    <span>Tasa Aplicada</span>
+                    <span id="applied-rate" class="highlight-text">0.00</span>
+                </div>
+                <div class="detail-row">
+                    <span>Tasa Base (Sin ganancia)</span>
+                    <span id="base-rate">0.00</span>
+                </div>
+                <div class="detail-row">
+                    <span>Ganancia Estimada</span>
+                    <span id="estimated-profit" class="profit-text">0.00</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- CONFIGURATION VIEW -->
+        <main id="view-config" class="view">
+            <h2>Configuración</h2>
+            <p class="subtitle">Ajusta los parámetros del día.</p>
+
+            <div class="config-form">
+                <div class="form-group">
+                    <label for="usd-cop">Precio Dólar en Pesos (COP)</label>
+                    <input type="number" id="usd-cop" placeholder="Ej: 3300" inputmode="decimal">
+                </div>
+                
+                <div class="form-group">
+                    <label for="usd-ves">Precio Dólar en Bolívares (VES)</label>
+                    <input type="number" id="usd-ves" placeholder="Ej: 700" inputmode="decimal">
+                </div>
+
+                <div class="form-group">
+                    <label for="margin-profit">Margen de Ganancia (%)</label>
+                    <input type="number" id="margin-profit" placeholder="Ej: 5" inputmode="decimal">
+                </div>
+
+                <button id="btn-save-config" class="primary-btn">Guardar y Volver</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">Configuración guardada</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
