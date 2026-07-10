@@ -158,7 +158,7 @@ function calculate() {
 
     const amount = parseFloat(amountStr);
     const marginRatio = config.margin / 100.0;
-    const baseRate = config.usdCop / config.usdVes; // COP per VES
+    const baseRate = parseFloat((config.usdCop / config.usdVes).toFixed(2)); // COP per VES
 
     let result = 0;
     let effectiveRate = 0;
@@ -192,7 +192,7 @@ function calculate() {
 }
 
 function updateUI() {
-    const baseRate = config.usdCop / config.usdVes;
+    const baseRate = parseFloat((config.usdCop / config.usdVes).toFixed(2));
     const marginRatio = config.margin / 100.0;
 
     baseRateEl.innerText = baseRate.toFixed(2);
